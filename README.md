@@ -18,3 +18,7 @@ __Steps__:
 - [ ] Create ability to generate reports for individuals (easy-to-read chart/table displaying which events they have attended/been absent from)
 
 - [ ] Create ability to make events (with mandatory-level as an option)
+
+__Technologies to be Used__:
+* Firebase API
+* NativeScript (for mobile app)
