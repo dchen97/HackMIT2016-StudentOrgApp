@@ -3,18 +3,18 @@ __Description__: Web and Mobile application for student-run organizations that r
 
 __Steps__:
 
-[] Create Web App UI
+- [ ] Create Web App UI
 
-[] Create Mobile App UI
+- [ ] Create Mobile App UI
 
-[] Create RSVP System
+- [ ] Create RSVP System
 
-[] Create ability to add/remove students to database
+- [ ] Create ability to add/remove students to database
 
-[] Create permissions ability
+- [ ] Create permissions ability
 
-[] Create Attendance/Accountability System
+- [ ] Create Attendance/Accountability System
 
-[] Create ability to generate reports for individuals (easy-to-read chart/table displaying which events they have attended/been absent from)
+- [ ] Create ability to generate reports for individuals (easy-to-read chart/table displaying which events they have attended/been absent from)
 
-[] Create ability to make events (with mandatory-level as an option)
+- [ ] Create ability to make events (with mandatory-level as an option)
