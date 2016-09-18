@@ -1,6 +1,6 @@
 // FirebaseUI config.
 var uiConfig = {
-  'signInSuccessUrl': '/login-success.html',
+  'signInSuccessUrl': '/public/login-success.html',
   'signInOptions': [
     // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -18,7 +18,7 @@ ui.start('#firebaseui-auth-container', uiConfig);
 //var Firebase = require("firebase");
 
 //storing into db: function needs to be called when button is clicked.
-//waiting for buttons to be implemented before fully setting up the function. 
+//waiting for buttons to be implemented before fully setting up the function.
 
 /* userID: INT
  * name: String

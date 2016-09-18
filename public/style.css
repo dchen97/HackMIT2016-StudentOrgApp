@@ -1,4 +1,6 @@
-
+.w3-navbar a {
+    color: #000!important;
+}
 .center {
     text-align: center;
 }
