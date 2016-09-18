@@ -21,9 +21,9 @@
     <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
       <a class="w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     </li>
-    <li><a href="#" class="w3-padding-large w3-white">Home</a></li>
+    <li><a href="index.html" class="w3-padding-large w3-white">Home</a></li>
     <li class="w3-hide-small"><a href="team-info.html" class="w3-padding-large w3-hover-white">Team Info</a></li>
-    <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white">Events</a></li>
+    <li class="w3-hide-small"><a href="events.html" class="w3-padding-large w3-hover-white">Events</a></li>
     <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white">Attendance</a></li>
   </ul>
 
@@ -31,58 +31,41 @@
   <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:51px">
     <ul class="w3-navbar w3-left-align w3-large w3-black">
       <li><a class="w3-padding-large" href="team-info.html">Team Info</a></li>
-      <li><a class="w3-padding-large" href="#">Events</a></li>
+      <li><a class="w3-padding-large" href="events.html">Events</a></li>
       <li><a class="w3-padding-large" href="#">Attendance</a></li>
     </ul>
   </div>
 
-  <form name = "Student">
-    <label for="#first-name">First Name</label>
-    <input id="first-name" name = "first-name" type="text" placeholder="Name" />
-    <label for="#last-name">Last Name</label>
-    <input id="last-name" name="last-name" type="text" placeholder="Name" />
-    <br><br>
-    <label for="#team-number">Team Number</label>
-    <select name="team-number" id="mission">
-      <option value="1">Mission Team 1</option>
-      <option value="2">Mission Team 2</option>
-      <option value="3">Mission Team 3</option>
-      <option value="4">Mission Team 4</option>
-    </select>
-    <input type="button" value="Add student" id="logSuccess">
-  </form>
-
   <div class="container-fluid" style="padding-top:70px;">
     <h1 style="text-align: center;">Create a Student</h1>
-    <form onsubmit = "addData();">
+    <form onsubmit = "addData(); return false;">
       <label for="#first-name">First Name</label>
-      <input id="first-name" name = "first-name" type="text" placeholder="Name" />
+      <input id="first-name" name = "first-name" type="text" placeholder="Name" required/>
       <label for="#last-name">Last Name</label>
-      <input id="last-name" name="last-name" type="text" placeholder="Name" />
+      <input id="last-name" name="last-name" type="text" placeholder="Name" required/>
       <br><br>
       <label for="email">E-mail (-.edu preferred)</label>
-      <input id="email" name="email" type="email" placeholder="1234@school.edu">
+      <input id="email" name="email" type="email" placeholder="1234@school.edu" required>
       <br>
       <label for="phone">Phone Number</label>
       <input id="phone" name="phone" type="number" placeholder="0000000000">
       <label for="#team-number">Team Number</label>
-      <select name="team-number" id="team-number">
+      <select name="team-number" id="team-number" required>
         <option value="1">Mission Team 1</option>
         <option value="2">Mission Team 2</option>
         <option value="3">Mission Team 3</option>
         <option value="4">Mission Team 4</option>
       </select>
       <br>
-      <label for="#isLeader">Is a Mission Team Leader?</label>
-      <input type="checkbox" name="isLeader" id="isLeader">
-      <label for="#isAdmin">Is an Administrator?</label>
+      <label for="isLeader">Is a Mission Team Leader?</label>
+      <input type="checkbox" name="isLeader" id="isLeader" >
       <br>
-      <input type="checkbox" name="isAdmin" id="isAdmin">
+      <label for="isAdmin">Is an Administrator?</label>
+      <input type="checkbox" name="isAdmin" id="isAdmin" >
       <br>
-      <input type="submit" value="Add student">
+      <input class="btn btn-success" id = "submit-button" type="submit" value="Add student">
     </form>
   </div>
->>>>>>> f62f029759cfd45f7a093017dbffd9b6a01300a5
 
     <!-- Leave out Storage -->
     <!-- <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-storage.js"></script> -->
@@ -130,15 +113,16 @@
 
     function logSuccess() {
         console.log("You're in logSuccess()!!");
-
         console.log(userid);
-    }
-    function addData(userid, mission) {
-        firebase.database().ref('users/' + userid).set({
-         userid: userid,
-         mission: mission
-        });
-    }
+  }
+
+  function addData(userid, mission) {
+      // firebase.database().ref('users/' + userid).set({
+      //  userid: userid,
+      //  mission: mission
+      // });
+      $('#submit-button').replaceWith('<h2 class="text-success">Student added!</h2>');
+  }
 
   </script>
   <script src = "js/my.js"></script>

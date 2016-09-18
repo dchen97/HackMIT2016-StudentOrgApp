@@ -10,11 +10,10 @@
 
   var addListGroupItem = function(destElement, name, href, description, contactInfo) {
     $(destElement).append(
-      '<a class="list-group-item" + href="' + href '">' +
+      '<a class="list-group-item" + href="' + href + '">' +
       '<h3 class="list-group-item-heading">' + name +
       '</h3>' +
       '<p class="list-group-item-text"><em>'+ description + '\n</em>' + contactInfo + '</p></a>'
     );
   }
-  }
-})
+});

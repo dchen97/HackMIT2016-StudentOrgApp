@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <title>programNAME</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <style>
+  body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+  .w3-navbar,h1,button {font-family: "Montserrat", sans-serif}
+  .fa-anchor,.fa-coffee {font-size:200px}
+
+  div{
+
+  }
+
+  p{ margin:0;}
+
+  .FutureEvents{
+    margin-top: 70px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .EventTop{
+
+  }
+  .TypeEvents{
+    font-size: 1.5em;
+    font-weight:bold;
+  }
+  .EventName{
+    font-size: 1.4em;
+    margin-left:10px;
+  }
+  .EventLocation{
+    margin-left:20px;
+    margin-bottom:5px;
+  }
+  .EventTime{
+    margin-left:20px;
+  }
+  .EventBlockFuture{
+    margin-bottom:15px;
+  }
+  </style>
+  <body>
+
+  <!-- Navbar -->
+  <ul class="w3-navbar w3-red w3-card-2 w3-top w3-left-align w3-large">
+    <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
+      <a class="w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    </li>
+    <li><a href="index.html" class="w3-padding-large w3-hover-white">Home</a></li>
+    <li class="w3-hide-small"><a href="team-info.html" class="w3-padding-large w3-hover-white">Team Info</a></li>
+    <li class="w3-hide-small"><a href="events.html" class="w3-padding-large w3-white">Events</a></li>
+    <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white">Attendance</a></li>
+  </ul>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:51px">
+    <ul class="w3-navbar w3-left-align w3-small w3-black">
+      <li><a class="w3-padding-large" href="index.html">Home</a></li>
+      <li><a class="w3-padding-large" href="team-info.html">Team Info</a></li>
+      <li><a class="w3-padding-large" href="events.html">Events</a></li>
+      <li><a class="w3-padding-large" href="#">Attendance</a></li>
+    </ul>
+  </div>
+
+  <!--All Events-->
+  <div class="FutureEvents">
+    <div class="EventTop">
+      <p class="TypeEvents"> Upcoming Events </p>
+      <div class="EventBlock">
+        <p class="EventName"> HackMIT </p>
+        <p class="EventLocation"> Massachusetts Ave, Cambridge, MA </p>
+        <p class="EventTime"> 9/16 at 8:00 AM - 9/17 at 11:30 PM </p>
+      </div>
+    </div>
+    <br>
+    <div class="spaceDivider">
+    </div>
+    <div class="pastEvents">
+      <p class="TypeEvents"> Previous Events</p>
+      <div class="EventBlock">
+        <p class="EventName"> Pusheen's Birthday Party </p>
+        <p class="EventLocation"> Pusheen's House </p>
+        <p class="EventTime"> 5/30 at 6:00 PM </p>
+      </div>
+     <!-- <div class="teamPerson">
+        <p class="personName"> Sarah Smith </p>
+        <p class="personEmail"> sarah@asu.edu </p>
+        <p class="personPhoneNum"> 502-333-1234 </p>
+      </div> -->
+    </div>
+
+  </div>
+  <br>
+  <div class="container-fluid">
+    <a class="btn btn-primary btn-lg" href="create-event.html">
+      Create an Event
+    </a>
+  </div>
+
+  <!-- Header -->
+  <!--<div class="w3-container w3-black w3-center w3-padding-128">
+    <h1 class="w3-margin w3-jumbo">START PAGE</h1>
+    <p class="w3-xlarge">ROBUST | QUICK | SWEET</p>
+    <button class="w3-btn w3-padding-16 w3-large w3-margin-top">Log In</button>
+  </div>-->
+
+  <!-- First Grid -->
+  <!--<div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+      <div class="w3-twothird">
+        <h1>Lorem Ipsum</h1>
+        <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h5>
+
+        <p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
+          occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+          laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+
+      <div class="w3-third w3-center">
+        <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
+      </div>
+    </div>
+  </div>-->
+  <script>
+  // Used to toggle the menu on small screens when clicking on the menu button
+  function myFunction() {
+      var x = document.getElementById("navDemo");
+      if (x.className.indexOf("programNAM") == -1) {
+          x.className += " w3-show";
+      } else {
+          x.className = x.className.replace(" w3-show", "");
+      }
+  }
+  </script>
+
+  </body>
+</html>

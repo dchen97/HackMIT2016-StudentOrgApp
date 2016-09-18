@@ -2,8 +2,8 @@
 <head>
     <title>Student Organization App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="w3.css">
     <link rel = "stylesheet" href="style.css">
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
     <!--this stuff is for login UI-->
@@ -11,6 +11,43 @@
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.css" />
     <style>
     .fa-anchor,.fa-coffee {font-size:200px;}
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .w3-navbar,h1,button {font-family: "Montserrat", sans-serif}
+    .fa-anchor,.fa-coffee {font-size:200px}
+
+    div{
+
+    }
+
+    p{ margin:0;}
+
+    .teamInfoAll{
+      margin-top: 70px;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+    .teamTop{
+
+    }
+    .columnHeader{
+      font-size: 1.5em;
+      font-weight:bold;
+    }
+    .personName{
+      font-size: 1.4em;
+      margin-left:10px;
+    }
+    .personEmail{
+      margin-left:20px;
+      margin-bottom:5px;
+    }
+    .personPhoneNum{
+      margin-left:20px;
+    }
+    .teamPerson{
+      margin-bottom:15px;
+    }
+
     </style>
 </head>
 
@@ -20,9 +57,9 @@
       <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
         <a class="w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
       </li>
-      <li><a href="#" class="w3-padding-large w3-hover-white">Home</a></li>
+      <li><a href="index.html" class="w3-padding-large w3-hover-white">Home</a></li>
       <li class="w3-hide-small"><a href="team-info.html" class="w3-padding-large w3-white">Team Info</a></li>
-      <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white">Events</a></li>
+      <li class="w3-hide-small"><a href="events.html" class="w3-padding-large w3-hover-white">Events</a></li>
       <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white">Attendance</a></li>
     </ul>
 
@@ -30,17 +67,44 @@
     <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:51px">
       <ul class="w3-navbar w3-left-align w3-large w3-black">
         <li><a class="w3-padding-large" href="team-info.html">Team Info</a></li>
-        <li><a class="w3-padding-large" href="#">Events</a></li>
+        <li><a class="w3-padding-large" href="events.html">Events</a></li>
         <li><a class="w3-padding-large" href="#">Attendance</a></li>
       </ul>
     </div>
 
-    <div class="container-fluid" style="padding-top:70px;" id="pas-content">
+    <div class="container-fluid" style="padding-top:0px;" id="pas-content">
+      <div class="teamInfoAll">
+        <div class="teamTop">
+          <p class="columnHeader"> Team Leader</p>
+          <div class="teamPerson">
+            <p class="personName"> Sarah Smith </p>
+            <p class="personEmail"> sarah@asu.edu </p>
+            <p class="personPhoneNum"> 502-333-1234 </p>
+          </div>
+        </div>
+        <div class="teamMiddle">
+        </div>
+        <div class="teamBottom">
+          <p class="columnHeader"> Team Members</p>
+          <div class="teamPerson">
+            <p class="personName"> Sarah Smith </p>
+            <p class="personEmail"> sarah@asu.edu </p>
+            <p class="personPhoneNum"> 502-333-1234 </p>
+          </div>
+          <div class="teamPerson">
+            <p class="personName"> Sarah Smith </p>
+            <p class="personEmail"> sarah@asu.edu </p>
+            <p class="personPhoneNum"> 502-333-1234 </p>
+          </div>
+        </div>
+
+        <br><br>
+        <a class="btn btn-primary btn-lg" href="create-student.html">Add a Student</a>
     </div>
     <!-- Leave out Storage -->
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
     <!-- <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-storage.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
     <script src="js/team-info.js"></script>
 
     <script>
