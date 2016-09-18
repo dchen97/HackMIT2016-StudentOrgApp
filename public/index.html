@@ -129,7 +129,8 @@
   }
 
   $(document).ready(function() {
-    if (!firebase.auth().currentUser) {
+      console.log(firebase.User);
+    if (!firebase.User) {
       $('#pas-content').append('<a href = "login.html"><button class="w3-btn w3-padding-16 w3-large w3-margin-top">Log In</button></a>');
     } else {
       $('#pas-content').append(
@@ -138,6 +139,7 @@
           '<p class="EventName"> HackMIT </p>'+
           '<p class="EventLocation"> Massachusetts Ave, Cambridge, MA </p>' +
           '<p class="EventTime"> 9/16 at 8:00 AM - 9/17 at 11:30 PM </p>' +
+          '<button class="w3-btn w3-padding-16 w3-large w3-margin-top" onClick = "bye()">Sign Out</button>' +
         '</div>'
       )
     }
@@ -169,5 +171,15 @@
   $('#settings-dropdown').mouseout(function() {
     $('#settings-dropdown').css('display', 'none');
   });
+
+  function bye() {
+      console.log("bye!");
+      firebase.auth().signOut().then(function() {
+            document.getElementById("pas-content").innerHTML = '<a href = "login.html"><button class="w3-btn w3-padding-16 w3-large w3-margin-top">Log In</button></a>';
+        }, function(error) {
+           $('#pas-content').append('Error: Sign out unsuccessful');
+           console.log("still logged in");
+        });
+  }
   </script>
 </body>
