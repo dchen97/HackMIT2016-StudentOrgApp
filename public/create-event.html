@@ -8,6 +8,7 @@
 
     <!--this stuff is for login UI-->
     <script src="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.js"></script>
+    <script src="js/jquery-3.1.0.min.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.css" />
 
     <style>
@@ -58,7 +59,7 @@
       <label for="#isMandatory">Is mandatory?</label>
       <input type="checkbox" name="isMandatory" id="isMandatory">
       <br>
-      <input class="btn btn-success" type="submit" name = "addStudent" value="Add event">
+      <input class="btn btn-success" type="submit" name = "addEvent" value="Add event">
     </form>
   </div>
 
@@ -91,17 +92,18 @@
       }
   }
 
-  var addData = function() {
-    var teams[];
+  function addData() {
+    console.log('addData reached');
+    var teams = [];
     $('#team-number :selected').each(function(i, selected) {
-      teams[i] = $(selected).value();
+      teams[i] = $(selected).selected;
     })
     var key = firebase.database().ref().child('events').push().key;
     firebase.database().ref('events/' + key).set({
-      eventName: $('#event-name').value,
-      description: $('#description').value,
+      eventName: $('#event-name').val(),
+      description: $('#description').val(),
       teamNumbers: teams,
-      date: $('#date').value,
+      date: $('#date').val(),
       isMandatory: $('#isMandatory').checked
     });
     window.location.href = '/event-added.html';
