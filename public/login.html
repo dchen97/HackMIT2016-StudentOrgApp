@@ -26,6 +26,8 @@
     <!-- <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-storage.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
     <script>
+
+    console.log(userid);
       // Initialize Firebase
       var config = {
         apiKey: "AIzaSyC-GU2N4roiJZIEJT_REN15CceUflgSD8A",
@@ -35,6 +37,8 @@
         messagingSenderId: "190541010595"
       };
       firebase.initializeApp(config);
+
+          var userid = firebase.getAuth(uid);
     </script>
 
     <!--needs firebase-->

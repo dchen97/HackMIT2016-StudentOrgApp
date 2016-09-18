@@ -26,10 +26,3 @@ ui.start('#firebaseui-auth-container', uiConfig);
  * attendance: bool (0 or 1)
  * permissions: ...
  */
-function addData(userId, name, eventname, attendance) {
-  firebase.database().ref('users/' + userId).set({
-    username: name,
-    eventname: eventname,
-    attendance: attendance
-  });
-}

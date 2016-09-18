@@ -36,20 +36,20 @@
     </ul>
   </div>
 
-  <form onsubmit = "addData();">
+  <form name = "Student">
     <label for="#first-name">First Name</label>
     <input id="first-name" name = "first-name" type="text" placeholder="Name" />
     <label for="#last-name">Last Name</label>
     <input id="last-name" name="last-name" type="text" placeholder="Name" />
     <br><br>
     <label for="#team-number">Team Number</label>
-    <select name="team-number" id="team-number">
+    <select name="team-number" id="mission">
       <option value="1">Mission Team 1</option>
       <option value="2">Mission Team 2</option>
       <option value="3">Mission Team 3</option>
       <option value="4">Mission Team 4</option>
     </select>
-    <input type="submit" value="Add student">
+    <input type="button" value="Add student" id="logSuccess">
   </form>
 
     <!-- Leave out Storage -->
@@ -69,9 +69,24 @@
       //var Firebase = require("firebase");
 
     </script>
+      <script src = "js/jquery-3.1.0.min.js"></script>
 
   <script>
   // Used to toggle the menu on small screens when clicking on the menu button
+
+    $(document).ready(function() {
+        $('#logSuccess').click(function() {
+            console.log("You're in logSuccess()!!");
+            var userid = firebase.auth().currentUser.uid;
+            var mission = $('#mission :selected').text();
+            console.log(userid);
+            console.log(mission);
+
+            addData(userid, mission);
+
+        });
+    });
+
   function myFunction() {
       var x = document.getElementById("navDemo");
       if (x.className.indexOf("programNAM") == -1) {
@@ -80,5 +95,19 @@
           x.className = x.className.replace(" w3-show", "");
       }
   }
+
+  function logSuccess() {
+     console.log("You're in logSuccess()!!");
+
+     console.log(userid);
+  }
+    function addData(userid, mission) {
+        firebase.database().ref('users/' + userid).set({
+         userid: userid,
+         mission: mission
+        });
+    }
+
   </script>
+  <script src = "js/my.js"></script>
 </body>
