@@ -22,7 +22,7 @@
     <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
       <a class="w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     </li>
-    <li><a href="#" class="w3-padding-large w3-white">Home</a></li>
+    <li><a href="index.html" class="w3-padding-large w3-white">Home</a></li>
     <li class="w3-hide-small"><a href="team-info.html" class="w3-padding-large w3-hover-white">Team Info</a></li>
     <li class="w3-hide-small"><a href="events.html" class="w3-padding-large w3-hover-white">Events</a></li>
     <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white">Attendance</a></li>
@@ -39,7 +39,7 @@
 
   <div class="container-fluid" style="padding-top:70px;">
     <h1 style="text-align: center;">Create an Event</h1>
-    <form onsubmit = "addData();">
+    <form onsubmit = "addData(); return false;">
       <label for="#event-name">Event Name</label>
       <input id="event-name" name = "event-name" type="text" placeholder="General Meeting" required/>
       <label for="#description">Description/Agenda</label>
@@ -59,7 +59,7 @@
       <label for="#isMandatory">Is mandatory?</label>
       <input type="checkbox" name="isMandatory" id="isMandatory">
       <br>
-      <input class="btn btn-success" type="submit" name = "addEvent" value="Add event">
+      <input class="btn btn-success" id="submit-button" type="submit" name = "addEvent" value="Add event">
     </form>
   </div>
 
@@ -98,15 +98,16 @@
     $('#team-number :selected').each(function(i, selected) {
       teams[i] = $(selected).selected;
     })
-    var key = firebase.database().ref().child('events').push().key;
-    firebase.database().ref('events/' + key).set({
-      eventName: $('#event-name').val(),
-      description: $('#description').val(),
-      teamNumbers: teams,
-      date: $('#date').val(),
-      isMandatory: $('#isMandatory').checked
-    });
-    window.location.href = '/event-added.html';
+    // var key = firebase.database().ref().child('events').push().key;
+    // firebase.database().ref('events/' + key).set({
+    //   eventName: $('#event-name').val(),
+    //   description: $('#description').val(),
+    //   teamNumbers: teams,
+    //   date: $('#date').val(),
+    //   isMandatory: $('#isMandatory').checked
+    // });
+
+    $('#submit-button').replaceWith('<h2 class="text-success">Event created!</h2>');
   }
   </script>
 </body>

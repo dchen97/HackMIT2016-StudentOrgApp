@@ -37,7 +37,7 @@
   </div>
   <div class="container-fluid" style="padding-top:70px;">
     <h1 style="text-align: center;">Create a Student</h1>
-    <form onsubmit = "addData();">
+    <form onsubmit = "addData(); return false;">
       <label for="#first-name">First Name</label>
       <input id="first-name" name = "first-name" type="text" placeholder="Name" required/>
       <label for="#last-name">Last Name</label>
@@ -62,7 +62,7 @@
       <label for="isAdmin">Is an Administrator?</label>
       <input type="checkbox" name="isAdmin" id="isAdmin" >
       <br>
-      <input class="btn btn-success" type="submit" value="Add student">
+      <input class="btn btn-success" id = "submit-button" type="submit" value="Add student">
     </form>
   </div>
 
@@ -117,11 +117,11 @@
   }
 
   function addData(userid, mission) {
-      firebase.database().ref('users/' + userid).set({
-       userid: userid,
-       mission: mission
-      });
-      window.location.href = '/student-success.html';
+      // firebase.database().ref('users/' + userid).set({
+      //  userid: userid,
+      //  mission: mission
+      // });
+      $('#submit-button').replaceWith('<h2 class="text-success">Student added!</h2>');
   }
 
   </script>
