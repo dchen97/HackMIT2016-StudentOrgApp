@@ -16,4 +16,20 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
 
-var Firebase = require("firebase");
+//var Firebase = require("firebase");
+
+//storing into db
+
+/* userID: INT
+ * name: String
+ * eventname: String
+ * attendance: bool (0 or 1)
+ * permissions: ...
+ */
+function addData(userId, name, eventname, attendance) {
+  firebase.database().ref('users/' + userId).set({
+    username: name,
+    eventname: eventname,
+    attendance: attendance
+  });
+}
