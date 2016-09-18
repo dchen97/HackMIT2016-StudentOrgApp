@@ -36,54 +36,30 @@
     </ul>
   </div>
 
-<<<<<<< HEAD
-  <form name = "Student">
-    <label for="#first-name">First Name</label>
-    <input id="first-name" name = "first-name" type="text" placeholder="Name" />
-    <label for="#last-name">Last Name</label>
-    <input id="last-name" name="last-name" type="text" placeholder="Name" />
-    <br><br>
-    <label for="#team-number">Team Number</label>
-    <select name="team-number" id="mission">
-      <option value="1">Mission Team 1</option>
-      <option value="2">Mission Team 2</option>
-      <option value="3">Mission Team 3</option>
-      <option value="4">Mission Team 4</option>
-    </select>
-    <input type="button" value="Add student" id="logSuccess">
-  </form>
-=======
   <div class="container-fluid" style="padding-top:70px;">
-    <h1 style="text-align: center;">Create a Student</h1>
+    <h1 style="text-align: center;">Create an Event</h1>
     <form onsubmit = "addData();">
-      <label for="#first-name">First Name</label>
-      <input id="first-name" name = "first-name" type="text" placeholder="Name" />
-      <label for="#last-name">Last Name</label>
-      <input id="last-name" name="last-name" type="text" placeholder="Name" />
+      <label for="#event-name">First Name</label>
+      <input id="event-name" name = "event-name" type="text" placeholder="General Meeting" />
+      <label for="#description">Description/Agenda</label>
+      <textarea id="description" name="description" placeholder="Description" />
       <br><br>
-      <label for="email">E-mail (-.edu preferred)</label>
-      <input id="email" name="email" type="email" placeholder="1234@school.edu">
-      <br>
-      <label for="phone">Phone Number</label>
-      <input id="phone" name="phone" type="number" placeholder="0000000000">
-      <label for="#team-number">Team Number</label>
-      <select name="team-number" id="team-number">
+      <label for="#team-number">Team(s) to Attend</label>
+      <select multiple name="team-number" id="team-number">
         <option value="1">Mission Team 1</option>
         <option value="2">Mission Team 2</option>
         <option value="3">Mission Team 3</option>
         <option value="4">Mission Team 4</option>
       </select>
       <br>
-      <label for="#isLeader">Is a Mission Team Leader?</label>
-      <input type="checkbox" name="isLeader" id="isLeader">
-      <label for="#isAdmin">Is an Administrator?</label>
+      <label for="date">Date/Time</label>
+      <input id="date" name="date" type="datetime-local">
       <br>
-      <input type="checkbox" name="isAdmin" id="isAdmin">
-      <br>
+      <label for="#isMandatory">Is mandatory?</label>
+      <input type="checkbox" name="isMandatory" id="isMandatory">
       <input type="submit" value="Add student">
     </form>
   </div>
->>>>>>> f62f029759cfd45f7a093017dbffd9b6a01300a5
 
     <!-- Leave out Storage -->
     <!-- <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-storage.js"></script> -->
@@ -102,24 +78,9 @@
       //var Firebase = require("firebase");
 
     </script>
-      <script src = "js/jquery-3.1.0.min.js"></script>
 
   <script>
   // Used to toggle the menu on small screens when clicking on the menu button
-
-    $(document).ready(function() {
-        $('#logSuccess').click(function() {
-            console.log("You're in logSuccess()!!");
-            var userid = firebase.auth().currentUser.uid;
-            var mission = $('#mission :selected').text();
-            console.log(userid);
-            console.log(mission);
-
-            addData(userid, mission);
-
-        });
-    });
-
   function myFunction() {
       var x = document.getElementById("navDemo");
       if (x.className.indexOf("programNAM") == -1) {
@@ -128,19 +89,5 @@
           x.className = x.className.replace(" w3-show", "");
       }
   }
-
-  function logSuccess() {
-     console.log("You're in logSuccess()!!");
-
-     console.log(userid);
-  }
-    function addData(userid, mission) {
-        firebase.database().ref('users/' + userid).set({
-         userid: userid,
-         mission: mission
-        });
-    }
-
   </script>
-  <script src = "js/my.js"></script>
 </body>
