@@ -2,8 +2,8 @@
 <head>
     <title>Student Organization App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="w3.css">
     <link rel = "stylesheet" href="style.css">
 
     <!--this stuff is for login UI-->
@@ -36,21 +36,31 @@
     </ul>
   </div>
 
-  <form onsubmit = "addData();">
-    <label for="#first-name">First Name</label>
-    <input id="first-name" name = "first-name" type="text" placeholder="Name" />
-    <label for="#last-name">Last Name</label>
-    <input id="last-name" name="last-name" type="text" placeholder="Name" />
-    <br><br>
-    <label for="#team-number">Team Number</label>
-    <select name="team-number" id="team-number">
-      <option value="1">Mission Team 1</option>
-      <option value="2">Mission Team 2</option>
-      <option value="3">Mission Team 3</option>
-      <option value="4">Mission Team 4</option>
-    </select>
-    <input type="submit" value="Add student">
-  </form>
+  <div class="container-fluid" style="padding-top:70px;">
+    <h1 style="text-align: center;">Create a Student</h1>
+    <form onsubmit = "addData();">
+      <label for="#first-name">First Name</label>
+      <input id="first-name" name = "first-name" type="text" placeholder="Name" />
+      <label for="#last-name">Last Name</label>
+      <input id="last-name" name="last-name" type="text" placeholder="Name" />
+      <br><br>
+      <label for="#team-number">Team Number</label>
+      <select name="team-number" id="team-number">
+        <option value="1">Mission Team 1</option>
+        <option value="2">Mission Team 2</option>
+        <option value="3">Mission Team 3</option>
+        <option value="4">Mission Team 4</option>
+      </select>
+      <br>
+      <label for="#isLeader">Is a Mission Team Leader?</label>
+      <input type="checkbox" name="isLeader" id="isLeader">
+      <label for="#isAdmin">Is an Administrator?</label>
+      <br>
+      <input type="checkbox" name="isAdmin" id="isAdmin">
+      <br>
+      <input type="submit" value="Add student">
+    </form>
+  </div>
 
     <!-- Leave out Storage -->
     <!-- <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-storage.js"></script> -->
