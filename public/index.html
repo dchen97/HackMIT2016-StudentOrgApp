@@ -18,21 +18,22 @@
 <body>
   <div class="container-fluid">
     <!-- Navbar -->
-    <ul class="w3-navbar w3-red w3-card-2 w3-top w3-left-align w3-large">
+    <ul class="w3-navbar w3-red w3-card-2 w3-top w3-left-align w3-large" id="top-nav">
       <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
         <a class="w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
       </li>
       <li><a href="#" class="w3-padding-large w3-white">Home</a></li>
       <li class="w3-hide-small"><a href="team-info.html" class="w3-padding-large w3-hover-white">Team Info</a></li>
-      <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white">Events</a></li>
+      <li class="w3-hide-small"><a href="events.html" class="w3-padding-large w3-hover-white">Events</a></li>
       <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white">Attendance</a></li>
+      <li class="w3-hide-small" style="float:right;" id="settings-button"><a href="#" class="w3-padding-large w3-hover-white"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
     </ul>
 
     <!-- Navbar on small screens -->
     <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:51px">
       <ul class="w3-navbar w3-left-align w3-large w3-black">
         <li><a class="w3-padding-large" href="team-info.html">Team Info</a></li>
-        <li><a class="w3-padding-large" href="#">Events</a></li>
+        <li><a class="w3-padding-large" href="events.html">Events</a></li>
         <li><a class="w3-padding-large" href="#">Attendance</a></li>
       </ul>
     </div>
@@ -45,8 +46,23 @@
     </div>
   </div>
 
+  <div class="w3-hide-small" id="settings-dropdown" style="display: none;list-style-type: none;">
+    <ul style="text-align: center;" id="settings-list">
+      <li style="color: white;">
+        <a href="#" alt="Profile">
+          Profile
+        </a>
+      </li>
+      <li style="color: white;">
+        <a href="#" alt="Settings">
+          Settings
+        </a>
+      </li>
+    </ul>
+  </div>
     <!-- Leave out Storage -->
     <!-- <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-storage.js"></script> -->
+    <script src="js/jquery-3.1.0.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
     <script>
       // Initialize Firebase
@@ -77,5 +93,32 @@
           x.className = x.className.replace(" w3-show", "");
       }
   }
+
+  // $(document).ready(function() {
+  //   if (firebase.database().ref('users/' + firebase.auth().currentUser.userId).on('value', function(snapshot) {
+  //     return snapshot.isAdmin || snapshot.isLead;
+  //   })) {
+  //     $('#settings-list').append(
+  //       '<li style="color: white;">' +
+  //       '<a href="#" alt="Manage Members">' +
+  //       'Manage Members </a></li>' +
+  //       '<li style="color: white;">' +
+  //       '<a href="#" alt="Manage Events">' +
+  //       'Manage Events </a></li>'
+  //     );
+  //   }
+  // });
+
+  $('#settings-button').mouseenter(function () {
+    var offset = $('#settings-button').offset();
+    $('#settings-dropdown').css('top', offset.top);
+    $('#settings-dropdown').css('left', offset.left);
+    $('#settings-dropdown').width($('#settings-button').clientWidth);
+    $('#settings-dropdown').css('display', 'initial');
+  });
+
+  $('#settings-dropdown').mouseout(function() {
+    $('#settings-dropdown').css('display', 'none');
+  });
   </script>
 </body>

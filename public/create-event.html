@@ -23,7 +23,7 @@
     </li>
     <li><a href="#" class="w3-padding-large w3-white">Home</a></li>
     <li class="w3-hide-small"><a href="team-info.html" class="w3-padding-large w3-hover-white">Team Info</a></li>
-    <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white">Events</a></li>
+    <li class="w3-hide-small"><a href="events.html" class="w3-padding-large w3-hover-white">Events</a></li>
     <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white">Attendance</a></li>
   </ul>
 
@@ -31,7 +31,7 @@
   <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:51px">
     <ul class="w3-navbar w3-left-align w3-large w3-black">
       <li><a class="w3-padding-large" href="team-info.html">Team Info</a></li>
-      <li><a class="w3-padding-large" href="#">Events</a></li>
+      <li><a class="w3-padding-large" href="events.html">Events</a></li>
       <li><a class="w3-padding-large" href="#">Attendance</a></li>
     </ul>
   </div>
@@ -39,13 +39,13 @@
   <div class="container-fluid" style="padding-top:70px;">
     <h1 style="text-align: center;">Create an Event</h1>
     <form onsubmit = "addData();">
-      <label for="#event-name">First Name</label>
-      <input id="event-name" name = "event-name" type="text" placeholder="General Meeting" />
+      <label for="#event-name">Event Name</label>
+      <input id="event-name" name = "event-name" type="text" placeholder="General Meeting" required/>
       <label for="#description">Description/Agenda</label>
-      <textarea id="description" name="description" placeholder="Description" />
+      <textarea id="description" name="description" placeholder="Description" style="vertical-align: top;"></textarea>
       <br><br>
       <label for="#team-number">Team(s) to Attend</label>
-      <select multiple name="team-number" id="team-number">
+      <select multiple name="team-number" id="team-number" required>
         <option value="1">Mission Team 1</option>
         <option value="2">Mission Team 2</option>
         <option value="3">Mission Team 3</option>
@@ -53,11 +53,12 @@
       </select>
       <br>
       <label for="date">Date/Time</label>
-      <input id="date" name="date" type="datetime-local">
+      <input id="date" name="date" type="datetime-local" required>
       <br>
       <label for="#isMandatory">Is mandatory?</label>
-      <input type="checkbox" name="isMandatory" id="isMandatory">
-      <input type="submit" value="Add student">
+      <input type="checkbox" name="isMandatory" id="isMandatory" required>
+      <br>
+      <input class="btn btn-success" type="submit" name = "addStudent" value="Add event">
     </form>
   </div>
 
@@ -88,6 +89,22 @@
       } else {
           x.className = x.className.replace(" w3-show", "");
       }
+  }
+
+  var addData = function() {
+    var teams[];
+    $('#team-number :selected').each(function(i, selected) {
+      teams[i] = $(selected).value();
+    })
+    var key = firebase.database().ref().child('events').push().key;
+    firebase.database().ref('events/' + key).set({
+      eventName: $('#event-name').value,
+      description: $('#description').value,
+      teamNumbers: teams,
+      date: $('#date').value,
+      isMandatory: $('#isMandatory').checked
+    });
+    window.location.href = 'event-added.html';
   }
   </script>
 </body>
