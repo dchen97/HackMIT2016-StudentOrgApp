@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<head>
+    <title>Student Organization App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="w3.css">
+    <!-- <link rel = "stylesheet" href="style.css"> -->
+
+    <!--this stuff is for login UI-->
+    <script src="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.css" />
+
+    <!-- d3.js library for Data Visualization -->
+    <script src="https://d3js.org/d3.v3.js"></script>
+    <script type = "text/javascript" src="js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src = "https://www.google.com/jsapi"></script>
+    <style>
+      .fa-anchor,.fa-coffee {font-size:200px;}
+      path {
+        stroke: steelblue;
+        stroke-width: 2;
+        fill: none;
+      }
+
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: grey;
+        stroke-width: 1;
+        shape-rendering: crispEdges;
+      }
+
+      .dot {
+        fill: steelblue;
+        stroke-width: 2;
+        r: 2px;
+      }
+
+      .dot:hover {
+        fill: darkblue;
+        stroke-width: 4;
+        r: 4px;
+      }
+    </style>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+           ['Status', 'Amount of Events'],
+            ['Present', 11],
+            ['Absent',  3],
+          ]);
+
+          var options = {
+            title: 'Engagement vs. NonEngagement',
+            is3D: false,
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('en_vs_non_pie'));
+          chart.draw(data, options);
+
+          data = google.visualization.arrayToDataTable([
+            ['Status', 'Amount of Events'],
+            ['Present', 11],
+            ['Expected to be Present', 5],
+          ]);
+
+          options = {
+            title: 'Expected vs. Actual Engagement',
+            is3D: false,
+          };
+
+          chart = new google.visualization.PieChart(document.getElementById('act_vs_exp_pie'));
+          chart.draw(data, options);
+
+          var margin = {top: 20, right: 20, bottom: 70, left: 50},
+          width = 600 - margin.left - margin.right;
+          height = 270 - margin.top - margin.bottom;
+
+          var parseDate = d3.time.format("%d-%b-%y").parse;
+
+          var x = d3.time.scale().range([0, width]);
+          var y = d3.scale.linear().range([height, 0]);
+
+          var xAxis = d3.svg.axis().scale(x)
+              .orient("bottom").ticks(6);
+
+          var yAxis = d3.svg.axis().scale(y)
+              .orient("left").ticks(5);
+
+          var valueline = d3.svg.line()
+              .x(function(d) { return x(d.date); })
+              .y(function(d) { return y(d.count); });
+
+          var svg = d3.select("#overall-att")
+              .append("svg")
+                  .attr("width", width + margin.left + margin.right)
+                  .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+                  .attr("transform",
+                        "translate(" + margin.left + "," + margin.top + ")");
+
+          data = [
+            {date: "02-May-16", count: "8"},
+            {date: "05-May-16", count: "12"},
+            {date: "12-May-16", count: "4"},
+            {date: "16-May-16", count: "16"},
+            {date: "21-May-16", count: "8"},
+            {date: "30-May-16", count: "9"},
+            {date: "02-Jun-16", count: "13"},
+            {date: "04-Jun-16", count: "2"},
+            {date: "07-Jun-16", count: "10"},
+            {date:"10-Jun-16", count: "12"},
+            {date: "16-Jun-16", count: "15"},
+            {date: "17-Jun-16", count: "10"},
+            {date: "25-Jun-16", count: "19"},
+            {date: "30-Jun-16", count: "14"},
+            {date: "01-Jul-16", count: "16"},
+            {date: "05-Jul-16", count: "20"},
+            {date: "10-Jul-16", count: "13"},
+            {date: "13-Jul-16", count: "16"},
+            {date: "17-Jul-16", count: "19"},
+            {date: "18-Jul-16", count: "9"},
+            {date: "21-Jul-16", count: "15"},
+            {date: "30-Jul-16", count: "11"},
+            {date: "04-Aug-16", count: "14"}
+          ];
+
+          data.forEach(function(d) {
+            d.date = parseDate(d.date);
+            d.count = +d.count;
+          });
+
+          x.domain(d3.extent(data, function(d) { console.log("date: " + d.date); return d.date; }));
+          y.domain([0, d3.max(data, function(d) { return d.count; })]);
+
+          svg.append("path")
+              .attr("class", "line")
+              .attr("d", valueline(data));
+
+          svg.append("div")
+              .attr("class", "tooltip")
+              .style("display", "none")
+                .append("h1")
+                  .attr("id", "date");
+
+          // svg.append("g").selectAll("circle")
+          //     .data(function(d) { return d.data.count; })
+          //     .enter()
+          //     .class('dot')
+          //     .attr("cx", function(d) { return x(d.date);})
+          //     .attr("cy", function(d) { return y(d.count);})
+          //     .on('mouseenter', function(d) {});
+
+          svg.append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0," + height + ")")
+              .call(xAxis);
+
+          svg.append("g")
+              .attr("class", "y axis")
+              .call(yAxis);
+          }
+    </script>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <ul class="w3-navbar w3-blue w3-card-2 w3-top w3-left-align w3-large">
+    <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
+      <a class="w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    </li>
+    <li><a href="index.html" class="w3-padding-large w3-white">Home</a></li>
+    <li class="w3-hide-small"><a href="team-info.html" class="w3-padding-large w3-hover-white">Team Info</a></li>
+    <li class="w3-hide-small"><a href="events.html" class="w3-padding-large w3-hover-white">Events</a></li>
+    <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white">Attendance</a></li>
+  </ul>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:51px">
+    <ul class="w3-navbar w3-left-align w3-large w3-black">
+      <li><a class="w3-padding-large" href="team-info.html">Team Info</a></li>
+      <li><a class="w3-padding-large" href="events.html">Events</a></li>
+      <li><a class="w3-padding-large" href="#">Attendance</a></li>
+    </ul>
+  </div>
+
+  <div style="padding-top:70px;">
+    <h2 style="text-align: center;"> Attendance</h2>
+    <div style="height: 25%; width: 100%;" class="pas-graph" id="overall-att"></div>
+  </div>
+
+  <div id="individ-att-menu">
+    <h4 style="text-align: center;">If you would like to view individual attendance records,
+      please select their name from the menu below.
+    </h4>
+    <form style="padding: 10px; text-align: center;" onsubmit = "refreshGraphs(); return false;">
+      <input type="radio" name="member" value="farah" /> Farah <br>
+      <input type="radio" name="member" value="derek" /> Derek <br>
+      <input type="radio" name="member" value="ana" /> Ana <br>
+      <input type="radio" name="member" value="diana" /> Diana <br>
+      <input type="radio" name="member" value="jiaqi" /> Jiaqi <br><br>
+      <input type="submit" class="btn btn-primary" value="Submit" />
+    </form>
+  </div>
+
+  <div class="pie1">
+    <h3 style="text-align:center;">Engagement vs. Nonengagement</h3>
+    <div>
+      <div id="en_vs_non_pie">
+      </div>
+    </div>
+  </div>
+
+  <div class="pie2">
+    <h3 style="text-align: center;">Expected vs. Actual Engagment</h3>
+    <div>
+      <div id="act_vs_exp_pie"></div>
+    </div>
+    <!-- <div style="width: 25%">
+      <table>
+        <tr>
+          <th>Status</th>
+          <th>Amount of Events</th>
+        </tr>
+        <tr>
+          <td>Present</td>
+          <td>11</td>
+        </tr>
+        <tr>
+          <td>Expected to be Present</td>
+          <td>16</td>
+        </tr>
+      </table>
+    </div> -->
+  </div>
+
+</body>
