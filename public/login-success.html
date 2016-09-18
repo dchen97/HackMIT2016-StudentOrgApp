@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<head>
+    <title>Student Organization App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel = "stylesheet" href="style.css">
+
+    <!--this stuff is for login UI-->
+    <script src="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.css" />
+
+    <style>
+    .fa-anchor,.fa-coffee {font-size:200px;}
+    </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <ul class="w3-navbar w3-red w3-card-2 w3-top w3-left-align w3-large">
+    <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
+      <a class="w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    </li>
+    <li><a href="#" class="w3-padding-large w3-white">Home</a></li>
+    <li class="w3-hide-small"><a href="team-info.html" class="w3-padding-large w3-hover-white">Team Info</a></li>
+    <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white">Events</a></li>
+    <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white">Attendance</a></li>
+  </ul>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:51px">
+    <ul class="w3-navbar w3-left-align w3-large w3-black">
+      <li><a class="w3-padding-large" href="team-info.html">Team Info</a></li>
+      <li><a class="w3-padding-large" href="#">Events</a></li>
+      <li><a class="w3-padding-large" href="#">Attendance</a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <h3>Upcoming Events</h3>
+        <div id="pas-upcoming-events">
+          <div class="list-group">
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <h3>Team Leader Info</h3>
+        <div id="pas-leader-info">
+          <div class="list-group"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <h3>Accountability</h3>
+    <div id="pas-attendance-graphic"></div>
+  </div>
+</body>
+
+<footer>
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-database.js"></script>
+
+    <!-- Leave out Storage -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-storage.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+    <script src="login-success.js"></script>
+    <!-- <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyC-GU2N4roiJZIEJT_REN15CceUflgSD8A",
+        authDomain: "hackmit-b1e28.firebaseapp.com",
+        databaseURL: "https://hackmit-b1e28.firebaseio.com",
+        storageBucket: "hackmit-b1e28.appspot.com",
+        messagingSenderId: "190541010595"
+      };
+      firebase.initializeApp(config); -->
+    </script>
+
+    <!--needs firebase-->
+    <script src="my.js"></script>
+    <script src ="jquery-3.1.0.min.js"></script>
+</footer>
