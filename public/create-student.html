@@ -36,7 +36,6 @@
     </ul>
   </div>
 
-<<<<<<< HEAD
   <form name = "Student">
     <label for="#first-name">First Name</label>
     <input id="first-name" name = "first-name" type="text" placeholder="Name" />
@@ -52,7 +51,7 @@
     </select>
     <input type="button" value="Add student" id="logSuccess">
   </form>
-=======
+
   <div class="container-fluid" style="padding-top:70px;">
     <h1 style="text-align: center;">Create a Student</h1>
     <form onsubmit = "addData();">
@@ -129,11 +128,11 @@
       }
   }
 
-  function logSuccess() {
-     console.log("You're in logSuccess()!!");
+    function logSuccess() {
+        console.log("You're in logSuccess()!!");
 
-     console.log(userid);
-  }
+        console.log(userid);
+    }
     function addData(userid, mission) {
         firebase.database().ref('users/' + userid).set({
          userid: userid,
